@@ -9,10 +9,9 @@ export const TeamPage = () =>  {
   useEffect(
     () => {
       const fetchMatches = async () => {
-        const response = await fetch('http://localhost:8080/team/Rajasthan%20Royals');
+        const response = await fetch('http://localhost:8080/team/Delhi%20Capitals');
         const data = await response.json();
         setTeam(data); 
-        // console.log(data);
       };
       fetchMatches();
 
@@ -22,8 +21,6 @@ export const TeamPage = () =>  {
   return (
     <div className="TeamPage">
       <h1>{team.teamName}</h1>
-
-
       <MatchDetailCard match = {team.matches[0]}></MatchDetailCard>
       {team.matches.slice(1).map(match => <MatchSmallCard match = {match}></MatchSmallCard>)}
 
