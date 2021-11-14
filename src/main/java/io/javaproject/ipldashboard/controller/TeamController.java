@@ -30,6 +30,7 @@ public class TeamController {
   public Team getTeam(@PathVariable String teamName) {
     Team team = this.teamRepository.findByTeamName(teamName);
     team.setMatches(matchRepository.findLastestMatchesByTeam(teamName, 4));
+
     return team;
   }
 
@@ -37,7 +38,6 @@ public class TeamController {
   public List<Match> getMatchesForTeam(@PathVariable String teamName, @RequestParam int year) {
     LocalDate startDate = LocalDate.of(year, 1, 1);
     LocalDate endDate = LocalDate.of(year + 1, 1, 1);
-
     return this.matchRepository.getMatchesByTeamBetweenDates(teamName, startDate, endDate);
   }
 }
